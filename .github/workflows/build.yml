@@ -16,7 +16,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: shadowsocks/android-ndk-go
+    container: 
+      image: shadowsocks/android-ndk-go
+      options: --user 1001
     env:
       GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process"
 
