@@ -6,9 +6,9 @@ name: CI
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-defaults:
-  run:
-    working-directory: code
+# defaults:
+#   run:
+#     working-directory: code
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,13 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: sudo
-        run: sudo chmod 777 .
+        run: sudo chmod -R 777 .. && \
+            sudo chmod -R 777 $GITHUB_WORKSPACE
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-#         with:
-#           repository: dev4u/shadowsocks-android
-#           path: ss
-#           submodules: true
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
 
 #       - name: checkout
 #         run: git clone --depth=1 https://github.com/dev4u/shadowsocks-android $GITHUB_WORKSPACE && \
