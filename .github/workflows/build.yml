@@ -50,11 +50,9 @@ jobs:
         run: env
         
       - name: Run Gradle command
-        uses: jojo243/android-gradle-action@2.1.3
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          # The gradle command you wish to run (required)
-          # Here, `./gradlew test` will be run
-          script: assembleDebug check -PCARGO_PROFILE=debug
+          arguments: assembleDebug check -PCARGO_PROFILE=debug
 
 
 
