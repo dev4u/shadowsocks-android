@@ -22,7 +22,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3.0.2
         with:
-          path: ~/shadowsocks-android
           submodules: true
 
       - name: checkout submodules
@@ -32,7 +31,7 @@ jobs:
             x86_64-linux-android
             
       - name: Run Build
-        run: ./gradlew assembleDebug check -PCARGO_PROFILE=debug
+        run: cd $GITHUB_WORKSPACE && ./gradlew assembleDebug check -PCARGO_PROFILE=debug
 
 
 
