@@ -39,7 +39,6 @@ jobs:
             
       - name: Run Build
         run: |
-          sudo cd $GITHUB_WORKSPACE
           sudo ./gradlew assembleDebug check -PCARGO_PROFILE=debug
 
 
