@@ -21,6 +21,7 @@ jobs:
       options: --user root
     env:
       GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process"
+      JAVA_HOME: /__t/Java_Adopt_jdk/11.0.16-8/x64
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
