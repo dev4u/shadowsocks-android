@@ -54,7 +54,7 @@ jobs:
       - name: Run Gradle command
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          arguments: assembleDebug check -PCARGO_PROFILE=debug
+          arguments: assembleDebug check -PCARGO_PROFILE=debug -Dlint.baselines.continue=true
 
 
 
