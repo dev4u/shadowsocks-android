@@ -20,12 +20,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3.0.2
-        with:
-          repository: dev4u/shadowsocks-android
-          path: ss
-          submodules: true
+#       - uses: actions/checkout@v3.0.2
+#         with:
+#           repository: dev4u/shadowsocks-android
+#           path: ss
+#           submodules: true
 
+      - name: checkout
+        run: git clone --depth=1 https://github.com/dev4u/shadowsocks-android $GITHUB_WORKSPACE && \
+            cd $GITHUB_WORKSPACE && \
+            git submodule update --init --recursive
       - name: checkout submodules
         run: rustup target add armv7-linux-androideabi \
             aarch64-linux-android \
