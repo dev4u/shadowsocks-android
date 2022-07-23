@@ -18,23 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: shadowsocks/android-ndk-go
-      options: --user 0
+      options: --user root
     env:
       GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: sudo
-        run: sudo chmod -R 777 .. && sudo chmod -R 777 $GITHUB_WORKSPACE
+#       - name: sudo
+#         run: sudo chmod -R 777 .. && sudo chmod -R 777 $GITHUB_WORKSPACE
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v3
-#         with:
-#           submodules: true
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
 
-      - name: checkout
-        run: |
-          sudo git clone --depth=1 https://github.com/dev4u/shadowsocks-android $GITHUB_WORKSPACE
-          sudo git submodule update --init --recursive
+#       - name: checkout
+#         run: |
+#           sudo git clone --depth=1 https://github.com/dev4u/shadowsocks-android $GITHUB_WORKSPACE
+#           sudo git submodule update --init --recursive
       - name: checkout submodules
         run: |
           rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
@@ -43,9 +43,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
           cache: gradle
-
+      - name: show env
+        run: env
       - name: Grant execute permission for gradlew
         run: sudo chmod +x gradlew
       - name: Build with Gradle
