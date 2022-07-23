@@ -32,7 +32,6 @@ jobs:
       - name: checkout
         run: |
           sudo git clone --depth=1 https://github.com/dev4u/shadowsocks-android $GITHUB_WORKSPACE
-          sudo cd $GITHUB_WORKSPACE
           sudo git submodule update --init --recursive
       - name: checkout submodules
         run: |
